@@ -1,6 +1,8 @@
 package pe.com.olmara.sistemaenviosolmaraeducation.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,6 +34,7 @@ public class EventoSeguimiento {
     private LocalDateTime fechaEvento;
 
     @Column(name = "created_at")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     public EventoSeguimiento() {
