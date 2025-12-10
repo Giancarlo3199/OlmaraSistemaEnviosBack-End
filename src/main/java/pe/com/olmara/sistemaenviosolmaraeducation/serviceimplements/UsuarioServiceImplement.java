@@ -1,6 +1,7 @@
 package pe.com.olmara.sistemaenviosolmaraeducation.serviceimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.com.olmara.sistemaenviosolmaraeducation.entities.Usuario;
 import pe.com.olmara.sistemaenviosolmaraeducation.repositories.IUsuarioRepository;
@@ -14,6 +15,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
     @Autowired
     private IUsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<Usuario> listar() {
         return usuarioRepository.findAll();
@@ -21,6 +25,7 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public void Registrar(Usuario u) {
+        u.setPassword(passwordEncoder.encode(u.getPassword()));
         usuarioRepository.save(u);
     }
 
@@ -31,6 +36,8 @@ public class UsuarioServiceImplement implements IUsuarioService {
 
     @Override
     public void Modificar(Usuario u) {
+        // Opcional: en producción deberías validar si viene un nuevo password
+        u.setPassword(passwordEncoder.encode(u.getPassword()));
         usuarioRepository.save(u);
     }
 
