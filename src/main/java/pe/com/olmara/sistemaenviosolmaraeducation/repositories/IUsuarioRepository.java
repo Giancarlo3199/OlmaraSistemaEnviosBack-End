@@ -6,5 +6,5 @@ import pe.com.olmara.sistemaenviosolmaraeducation.entities.Usuario;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
-
+    Usuario findOneByUsername(String username);
 }
