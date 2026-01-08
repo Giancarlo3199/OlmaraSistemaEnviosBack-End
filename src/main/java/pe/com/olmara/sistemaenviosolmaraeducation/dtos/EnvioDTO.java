@@ -13,6 +13,8 @@ public class EnvioDTO {
     private String numeroGuiaExterna;
     private String numeroFacturaExterna;
     private String numeroTrackingExterno;
+    private String boletaInterna;
+
 
     private EmpresaTransporteDTO empresaTransporte;
 
@@ -20,7 +22,9 @@ public class EnvioDTO {
     private String direccionEnvio;
 
     private CiudadDTO ciudadPartida;
-    private CiudadDTO ciudadLlegada;
+    private String destino;
+    /*
+    private CiudadDTO ciudadLlegada; */
 
     private Integer cantidadCajas;
     private Integer cantidadPaquetes;
@@ -31,6 +35,7 @@ public class EnvioDTO {
     private LocalDate fechaEnvio;
     private LocalDate fechaEstimadaLlegada;
     private LocalDate fechaRecepcion;
+    private LocalDate fechaTransito;
 
     private BigDecimal montoPagado;
     private String moneda;
@@ -44,12 +49,36 @@ public class EnvioDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDate getFechaTransito() {
+        return fechaTransito;
+    }
+
+    public void setFechaTransito(LocalDate fechaTransito) {
+        this.fechaTransito = fechaTransito;
+    }
+
+    public String getBoletaInterna() {
+        return boletaInterna;
+    }
+
+    public void setBoletaInterna(String boletaInterna) {
+        this.boletaInterna = boletaInterna;
     }
 
     public String getNumeroGuiaInterna() {
@@ -131,7 +160,7 @@ public class EnvioDTO {
     public void setCantidadPaquetes(Integer cantidadPaquetes) {
         this.cantidadPaquetes = cantidadPaquetes;
     }
-
+ /*
     public CiudadDTO getCiudadLlegada() {
         return ciudadLlegada;
     }
@@ -139,7 +168,7 @@ public class EnvioDTO {
     public void setCiudadLlegada(CiudadDTO ciudadLlegada) {
         this.ciudadLlegada = ciudadLlegada;
     }
-
+*/
     public Integer getCantidadCajas() {
         return cantidadCajas;
     }

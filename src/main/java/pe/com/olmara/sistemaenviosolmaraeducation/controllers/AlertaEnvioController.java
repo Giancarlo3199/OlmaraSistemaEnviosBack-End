@@ -50,4 +50,19 @@ public class AlertaEnvioController {
     public void Eliminar(@PathVariable("id") Long id) {
         aS.Eliminar(id);
     }
+
+    @GetMapping("/no-leidas")
+    public List<AlertaEnvio> listarNoLeidas() {
+        return aS.listarNoLeidas();
+    }
+
+    @GetMapping("/count")
+    public long contarNoLeidas() {
+        return aS.contarNoLeidas();
+    }
+
+    @PutMapping("/leer/{id}")
+    public void marcarComoLeida(@PathVariable Long id) {
+        aS.marcarComoLeida(id);
+    }
 }

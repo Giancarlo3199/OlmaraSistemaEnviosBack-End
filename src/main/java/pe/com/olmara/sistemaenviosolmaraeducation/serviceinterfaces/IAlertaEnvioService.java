@@ -10,4 +10,9 @@ public interface IAlertaEnvioService {
     AlertaEnvio listarporid(Long id);
     void Modificar(AlertaEnvio a);
     void Eliminar(Long id);
+
+    //PARA LAS ALERTAS SI SON LEIDAS O NO
+    List<AlertaEnvio> listarNoLeidas();
+    void marcarComoLeida(Long id);
+    long contarNoLeidas();
 }
