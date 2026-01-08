@@ -23,6 +23,9 @@ public class Envio {
     @Column(name = "numero_factura_interna", length = 50)
     private String numeroFacturaInterna;
 
+    @Column(name = "boleta_interna", length = 50)
+    private String boletaInterna;
+
     @Column(name = "numero_guia_externa", length = 50)
     private String numeroGuiaExterna;
 
@@ -50,9 +53,12 @@ public class Envio {
     @JoinColumn(name = "ciudad_partida_id", nullable = false)
     private Ciudad ciudadPartida;
 
+    @Column(name = "destino", length = 150)
+    private String destino;
+    /*
     @ManyToOne
-    @JoinColumn(name = "ciudad_llegada_id", nullable = false)
-    private Ciudad ciudadLlegada;
+    @JoinColumn(name = "ciudad_llegada_id")
+    private Ciudad ciudadLlegada;*/
 
     // Cantidades
     @Column(name = "cantidad_cajas")
@@ -77,6 +83,10 @@ public class Envio {
 
     @Column(name = "fecha_recepcion")
     private LocalDate fechaRecepcion;
+
+    @Column(name = "fecha_transito")
+    private LocalDate fechaTransito;
+
 
     // Pago
     @Column(name = "monto_pagado", precision = 10, scale = 2)
@@ -112,10 +122,14 @@ public class Envio {
     private LocalDateTime updatedAt;
 
 
+
+
     public Envio() {
     }
 
-    public Envio(String numeroTrackingExterno, String numeroFacturaExterna, String numeroGuiaExterna, String numeroFacturaInterna, String numeroGuiaInterna, Long id, EmpresaTransporte empresaTransporte, TipoEnvio tipoEnvio, String direccionEnvio, Ciudad ciudadPartida, Ciudad ciudadLlegada, Integer cantidadCajas, Integer cantidadPaquetes, Integer cantidadSobres, BigDecimal pesoTotal, LocalDate fechaEnvio, LocalDate fechaEstimadaLlegada, LocalDate fechaRecepcion, BigDecimal montoPagado, String moneda, String comentarios, EstadoEnvio estado, Usuario operador, Usuario destinatario, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Envio(String destino, String numeroTrackingExterno, String numeroFacturaExterna, String numeroGuiaExterna, String numeroFacturaInterna,String boletaInterna, String numeroGuiaInterna, Long id, EmpresaTransporte empresaTransporte, TipoEnvio tipoEnvio, String direccionEnvio, Ciudad ciudadPartida, Integer cantidadCajas, Integer cantidadPaquetes, Integer cantidadSobres, BigDecimal pesoTotal, LocalDate fechaEnvio, LocalDate fechaEstimadaLlegada, LocalDate fechaRecepcion, BigDecimal montoPagado, String moneda, String comentarios, EstadoEnvio estado, Usuario operador, Usuario destinatario, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDate fechaTransito) {
+
+        this.boletaInterna = boletaInterna;
         this.numeroTrackingExterno = numeroTrackingExterno;
         this.numeroFacturaExterna = numeroFacturaExterna;
         this.numeroGuiaExterna = numeroGuiaExterna;
@@ -126,7 +140,8 @@ public class Envio {
         this.tipoEnvio = tipoEnvio;
         this.direccionEnvio = direccionEnvio;
         this.ciudadPartida = ciudadPartida;
-        this.ciudadLlegada = ciudadLlegada;
+        this.destino= destino;
+        /*this.ciudadLlegada = ciudadLlegada;*/
         this.cantidadCajas = cantidadCajas;
         this.cantidadPaquetes = cantidadPaquetes;
         this.cantidadSobres = cantidadSobres;
@@ -142,6 +157,31 @@ public class Envio {
         this.destinatario = destinatario;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.fechaTransito = fechaTransito;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public LocalDate getFechaTransito() {
+        return fechaTransito;
+    }
+
+    public void setFechaTransito(LocalDate fechaTransito) {
+        this.fechaTransito = fechaTransito;
+    }
+
+    public String getBoletaInterna() {
+        return boletaInterna;
+    }
+
+    public void setBoletaInterna(String boletaInterna) {
+        this.boletaInterna = boletaInterna;
     }
 
     public Long getId() {
@@ -223,7 +263,7 @@ public class Envio {
     public void setCiudadPartida(Ciudad ciudadPartida) {
         this.ciudadPartida = ciudadPartida;
     }
-
+/*
     public Ciudad getCiudadLlegada() {
         return ciudadLlegada;
     }
@@ -231,7 +271,7 @@ public class Envio {
     public void setCiudadLlegada(Ciudad ciudadLlegada) {
         this.ciudadLlegada = ciudadLlegada;
     }
-
+*/
     public Integer getCantidadCajas() {
         return cantidadCajas;
     }

@@ -38,4 +38,23 @@ public class AlertaEnvioServiceImplement implements IAlertaEnvioService {
     public void Eliminar(Long id) {
         alertaEnvioRepository.deleteById(id);
     }
+
+    @Override
+    public List<AlertaEnvio> listarNoLeidas() {
+        return alertaEnvioRepository.findByEsLeidaFalseOrderByCreatedAtDesc();
+    }
+
+    @Override
+    public void marcarComoLeida(Long id) {
+        AlertaEnvio alerta = alertaEnvioRepository.findById(id).orElse(null);
+        if (alerta != null) {
+            alerta.setEsLeida(true);
+            alertaEnvioRepository.save(alerta);
+        }
+    }
+
+    @Override
+    public long contarNoLeidas() {
+        return alertaEnvioRepository.countByEsLeidaFalse();
+    }
 }
