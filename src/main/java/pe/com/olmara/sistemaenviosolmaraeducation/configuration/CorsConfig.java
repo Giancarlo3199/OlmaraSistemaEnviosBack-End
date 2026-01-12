@@ -13,10 +13,15 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
 
+        // NO usar "*" si usas credentials
+        config.setAllowCredentials(false);
+
+        // Frontend LOCAL
         config.addAllowedOrigin("http://localhost:4200");
-        config.addAllowedOrigin("https://olmarasistemaenviosback-end-production.up.railway.app");
+
+        // Frontend PRODUCCIÓN
+        config.addAllowedOrigin("https://olmarasistemaenviosfront-end-production.up.railway.app");
 
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");

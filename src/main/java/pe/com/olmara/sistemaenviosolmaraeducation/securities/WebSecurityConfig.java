@@ -69,8 +69,7 @@ public class WebSecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
-                        // Login público
-                        .requestMatchers("/login").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Registro de usuario sin token (ACTIVO PARA DESARROLLO)
                         .requestMatchers(HttpMethod.POST, "/usuario").permitAll()
                         // PARA LISTAR USUARIO - DESABILITADO AHORA
